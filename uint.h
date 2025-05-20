@@ -318,7 +318,7 @@ public:
     for (uint64_t i=0; i < n_; i++) {
       result.words_[i + word_up] |= static_cast<uint64_t>(words_[i]) << bits_up;
       if ((bits_up != 0) && (dshamt + w_ > kWordSize) && (i + word_up + 1 < result.NW))
-        result.words_[i + word_up + 1] = words_[i] >> cap(kWordSize - bits_up);
+        result.words_[i + word_up + 1] = static_cast<uint64_t>(words_[i]) >> cap(kWordSize - bits_up);
     }
     return result;
   }
